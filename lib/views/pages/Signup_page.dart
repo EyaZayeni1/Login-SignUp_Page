@@ -5,6 +5,7 @@ class SignupPage
  extends StatelessWidget {
 SignupPage({super.key});
 final _formKey = GlobalKey<FormState>();
+final _passwordcontroller=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +60,7 @@ final _formKey = GlobalKey<FormState>();
   },
 ),
                   TextFormField(
+                    controller: _passwordcontroller,
                     decoration: const InputDecoration(label: Text("Mot De Passe ")
                   ), 
                   obscureText: true,
@@ -77,6 +79,22 @@ final _formKey = GlobalKey<FormState>();
                     }
                   })
                   ,
+                  TextFormField(
+                    decoration: const InputDecoration(label: Text("Confirm Password")),
+                    obscureText: true,
+                    validator: (value) {
+                      if (value==null || value.isEmpty ){
+                      return " veuillez saisir votre mot de passe ";
+                    }
+                    if(value !=_passwordcontroller.text) {
+                      return "Passwords don't match";
+                      
+                    }
+                    else {
+                      return null;
+                    }},
+
+                  ),
 
 
                   const SizedBox(height: 20),

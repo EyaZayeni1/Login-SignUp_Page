@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_signup/views/pages/Forgetpassword_page.dart';
 import 'package:login_signup/views/pages/Home_page.dart';
 import 'package:login_signup/views/pages/Signup_page.dart';
 
@@ -58,7 +59,7 @@ class WelcomePage extends StatelessWidget {
                       if (value.length > 10) {
                         return "La taille maximale du mot de passe est 10 caractères";
                       }
-                      if (value.length < 6) { // Added minimum length check (optional)
+                      if (value.length < 6) { 
                         return "Le mot de passe doit contenir au moins 6 caractères";
                       }
                       return null;
@@ -84,7 +85,19 @@ class WelcomePage extends StatelessWidget {
                 ],
               ),
             ),
+             const SizedBox(height: 20), 
             
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ForgetPasswordPage(),
+                  ),
+                );
+              },
+              child: const Text("Forget Password ? "),
+            ),
             const SizedBox(height: 20), 
             
             TextButton(
